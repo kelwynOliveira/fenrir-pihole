@@ -16,3 +16,9 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.fenrir.rule=Host(`fenrir.lik3.net`)"
+      - "traefik.http.routers.fenrir.entrypoints=websecure"
+      - "traefik.http.routers.fenrir.tls.certresolver=cloudflare"
+      - "traefik.http.services.fenrir.loadbalancer.server.port=80"
